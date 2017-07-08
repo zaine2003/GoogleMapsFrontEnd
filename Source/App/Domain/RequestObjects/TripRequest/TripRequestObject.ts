@@ -1,16 +1,13 @@
 module BuildingBlocksWeb.Domains {
 
-    export interface ITripRequestObject {
-        trips: Array<Trip>;
-    }
+    export class TripRequestObject {
 
-    export class TripRequestObject implements ITripRequestObject {
-
-        public trips: Array<Trip>;
-
-        constructor() {
-            this.trips = new Array<Trip>();
-        }
+        public tripId?: number;
+        public originAddress: string;
+        public destinationAddress: string;
+        public mode: string;
+        public avoid: string;
+        public unit: string;
 
     }
 }
