@@ -10,9 +10,9 @@ module BuildingBlocksWeb.Services {
         SaveTrip(tripRequestObject: Domains.RequestObjects.Trip.TripRequestObject): ng.IPromise<any>;
         SaveTrips(tripRequestObject: Domains.RequestObjects.Trip.TripsRequestObject): ng.IPromise<any>;
 
-        put(): ng.IPromise<any>;
-    }
+        UpdateTrip(trip: Domains.Trip.TripModel): ng.IPromise<any>;
 
+    }
 
     export class BuildingBlocksWebService implements IBuildingBlocksWebService {
 
@@ -89,19 +89,18 @@ module BuildingBlocksWeb.Services {
             return this.$http(requestObject);
         }
 
-
         // -----------------------------------------------------------------------------------
         // Put Requests
         // -----------------------------------------------------------------------------------
-        put = (): ng.IPromise<any> => {
+        UpdateTrip = (trip: Domains.Trip.TripModel): ng.IPromise<any> => {
             const requestObject = {
-                data: new Array(),
+                data: trip,
                 headers: {
                     'Content-type': 'application/json',
                 },
                 method: 'PUT',
                 responseType: 'json',
-                url: '/UpdateTrip/',
+                url: '/api/UpdateTrip/',
             };
 
             return this.$http(requestObject);
