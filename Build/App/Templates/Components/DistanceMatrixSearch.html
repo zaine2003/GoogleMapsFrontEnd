@@ -3,14 +3,43 @@
     <div class="panel-heading"><b>Distance Search</b></div>
     <div class="panel-body">
       <form>
+
         <div class="form-group">
           <label for="origin">Origin:</label>
           <input type="text" class="form-control" id="origin" placeholder="Origin">
         </div>
+
         <div class="form-group">
           <label for="destination">Destination:</label>
           <input type="text" class="form-control" id="destination" placeholder="Destination">
         </div>
+<hr>
+        <div class="form-group">
+          <label for="mode">Mode of Travel:</label>
+          <select class="form-control" id="mode">
+             <option>Select Mode</option>
+            <option>Bicycle</option>
+            <option>Driving</option>
+            <option>Walking</option>           
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="avoid">Avoiding:</label>
+          <select class="form-control" id="avoid">
+             <option>Avoid</option>
+            <option>Tolls</option>
+            <option>Highway</option>
+            <option>Ferries</option>  
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="avoid">Required Measurement:</label><br>
+          <label class="radio-inline"><input type="radio" name="imperial">Imperial</label>
+          <label class="radio-inline"><input type="radio" name="metric">Metric</label>
+        </div>
+<hr>
+
         <div class="col-md-2 col-md-offset-10">
           <button type="submit" class="btn btn-default">Search</button>
         </div>
@@ -22,6 +51,7 @@
   <div class="panel panel-default">
     <div class="panel-heading"><b>Results</b></div>
     <div class="panel-body">
+      <hr>
       <div class="col-md-2 col-md-offset-10">
         <button type="submit" class="btn btn-default">Save</button>
       </div>
