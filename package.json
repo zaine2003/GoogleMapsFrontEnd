@@ -1,0 +1,26 @@
+{
+  "name": "buildingblocksweb",
+  "version": "1.0.0",
+  "description": "Technical test web front end.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mike Hughes",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/angular": "1.6.21",
+    "@types/node": "8.0.2",
+    "@types/bootstrap": "3.3.34",
+    "@types/jquery": "3.2.6",
+    "@types/angular-spinner":"0.5.32",
+    "typescript": "*"
+  },
+   "dependencies": {
+    "angular": "~1.6.4",    
+    "angular-spinner": "*",  
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0"
+  }
+ 
+  }
