@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+         //"outDir": "./Build/js/",
+        "target": "es5",
+        "module": "commonjs",       
+        "sourceMap": true,
+        "moduleResolution":"classic",
+        "baseUrl": "./Source/App",
+        "typeRoots": [
+            "../node_modules/@types"
+        ],
+        "types": [
+            "jquery",
+            "angular",
+            "angular-animate",
+            "angular-spinner",           
+            "bootstrap"
+        ],
+        "watch": true
+    },    
+    "version": "2.2.2"
+}

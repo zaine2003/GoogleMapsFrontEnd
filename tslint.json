@@ -1,0 +1,16 @@
+{
+  "extends": "tslint:recommended",
+  "rules": {
+    "quotemark": [true, "single", "avoid-escape"],
+    "max-classes-per-file": [2],
+    "member-access": [
+      false
+    ],
+    "no-consecutive-blank-lines": [true, 2],
+    "no-var-requires": false,
+    "no-namespace": [
+      false
+    ]
+  }
+
+}
