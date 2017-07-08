@@ -1,7 +1,7 @@
 
 module BuildingBlocksWeb.Components {
 
-    export class BuildingBlocksWebComponent implements ng.IComponentOptions {
+    export class SavedDistancesComponent implements ng.IComponentOptions {
         public bindings: any;
         public controller: any;
         public controllerAs: string;
@@ -9,16 +9,14 @@ module BuildingBlocksWeb.Components {
 
         constructor() {
 
-            this.bindings = {
-                x: '<', // one way!
-            };
+            this.bindings = {};
 
-            this.controller = BuildingBlocksWebComponentController;
-            this.templateUrl = '../Templates/Components/BuildingBlocksWeb.html';
+            this.controller = SavedDistancesController;
+            this.templateUrl = './Build/App/Templates/Components/SavedDistances.html';
         }
     }
 
-    class BuildingBlocksWebComponentController implements ng.IController {
+    class SavedDistancesController implements ng.IController {
 
         static $inject = ['BuildingBlocksWebService', 'usSpinnerService'];
 
@@ -28,9 +26,7 @@ module BuildingBlocksWeb.Components {
             private BuildingBlocksWebService: Services.BuildingBlocksWebService,
             private usSpinnerService: ISpinnerService) { }
 
-             $onInit = () => {
-                 this.x = '';
-              }
+             $onInit = () => {}
 
         // -----------------------------------------------------------------------------------
         // Service Calls
@@ -58,6 +54,6 @@ module BuildingBlocksWeb.Components {
 
     }
 
-    angular.module('BuildingBlocksWeb').component('BuildingBlocksWebComponent', new BuildingBlocksWebComponent());
+    angular.module('BuildingBlocksDistanceMatrixDemo').component('bbSavedDistances', new SavedDistancesComponent());
 
 }
