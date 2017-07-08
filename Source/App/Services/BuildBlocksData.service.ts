@@ -1,5 +1,5 @@
 
-namespace BuildingBlocksWeb.Services {
+module BuildingBlocksWeb.Services {
 
     export interface IBuildingBlocksWebService {
         Distance(origin: string, destination: string): ng.IPromise<any>;
@@ -7,7 +7,9 @@ namespace BuildingBlocksWeb.Services {
         DistanceViaMode(origin: string, destination: string, mode: string): ng.IPromise<any>;
         DistanceAvoiding(origin: string, destination: string, avoid: string): ng.IPromise<any>;
 
-        post(): ng.IPromise<any>;
+        SaveTrip(tripRequestObject: Domains.RequestObjects.Trip.TripRequestObject): ng.IPromise<any>;
+        SaveTrips(tripRequestObject: Domains.RequestObjects.Trip.TripsRequestObject): ng.IPromise<any>;
+
         put(): ng.IPromise<any>;
     }
 
@@ -26,7 +28,7 @@ namespace BuildingBlocksWeb.Services {
             const requestObject: ng.IRequestConfig = {
                 method: 'GET',
                 responseType: 'json',
-                url: '/Distance/' + this.origin + '/' + this.destination,
+                url: '/api/Distance/' + origin + '/' + destination,
             };
             return this.$http(requestObject);
         }
@@ -35,7 +37,7 @@ namespace BuildingBlocksWeb.Services {
             const requestObject: ng.IRequestConfig = {
                 method: 'GET',
                 responseType: 'json',
-                url: '/Distance/' + this.origin + '/' + this.destination,
+                url: '/api/Distance/' + origin + '/' + destination,
             };
             return this.$http(requestObject);
         }
@@ -44,7 +46,7 @@ namespace BuildingBlocksWeb.Services {
             const requestObject: ng.IRequestConfig = {
                 method: 'GET',
                 responseType: 'json',
-                url: '/DistanceViaMode/' + this.origin + '/' + this.destination + '/' + this.mode,
+                url: '/api/DistanceViaMode/' + origin + '/' + destination + '/' + mode,
             };
             return this.$http(requestObject);
         }
@@ -53,22 +55,35 @@ namespace BuildingBlocksWeb.Services {
             const requestObject: ng.IRequestConfig = {
                 method: 'GET',
                 responseType: 'json',
-                url: '/DistanceAvoiding/' + this.origin + '/' + this.destination + '/' + this.avoid,
+                url: '/api/DistanceAvoiding/' + origin + '/' + destination + '/' + avoid,
             };
             return this.$http(requestObject);
         }
         // -----------------------------------------------------------------------------------
         // Post Requests
         // -----------------------------------------------------------------------------------
-        post = (): ng.IPromise<any> => {
+        SaveTrip = (tripRequestObject: Domains.RequestObjects.Trip.TripRequestObject): ng.IPromise<any> => {
             const requestObject = {
-                data: new Array(),
+                data: tripRequestObject,
                 headers: {
                     'Content-type': 'application/json',
                 },
                 method: 'POST',
                 responseType: 'json',
-                url: '/api/quotation/getVehicleManufacturers/',
+                url: '/api/SaveTrip/',
+            };
+
+            return this.$http(requestObject);
+        }
+        SaveTrips = (tripRequestObject: Domains.RequestObjects.Trip.TripsRequestObject): ng.IPromise<any> => {
+            const requestObject = {
+                data: tripRequestObject,
+                headers: {
+                    'Content-type': 'application/json',
+                },
+                method: 'POST',
+                responseType: 'json',
+                url: '/api/SaveTrips/',
             };
 
             return this.$http(requestObject);
@@ -86,7 +101,7 @@ namespace BuildingBlocksWeb.Services {
                 },
                 method: 'PUT',
                 responseType: 'json',
-                url: '/api/quotation/getVehicleManufacturers/',
+                url: '/UpdateTrip/',
             };
 
             return this.$http(requestObject);
