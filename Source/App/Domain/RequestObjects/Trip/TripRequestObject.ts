@@ -1,6 +1,10 @@
 namespace BuildingBlocksWeb.Domains {
 
-    export class TripRequestObject {
+    export interface ITripRequestObject {
+        trips: Array<Trip>;
+    }
+
+    export class TripRequestObject implements ITripRequestObject {
 
         public trips: Array<Trip>;
 
