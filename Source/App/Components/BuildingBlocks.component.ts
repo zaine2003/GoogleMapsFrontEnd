@@ -14,7 +14,7 @@ namespace BuildingBlocksWeb.Components {
             };
 
             this.controller = BuildingBlocksWebComponentController;
-            this.templateUrl = '';
+            this.templateUrl = '../Templates/Components/BuildingBlocksWeb.html';
         }
     }
 
