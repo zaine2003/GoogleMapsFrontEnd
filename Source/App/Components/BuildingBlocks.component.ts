@@ -18,10 +18,9 @@ namespace BuildingBlocksWeb.Components {
         }
     }
 
-    export class BuildingBlocksWebController implements ng.IController {
+    class BuildingBlocksWebController implements ng.IController {
 
         static $inject = [];
-
 
         public x: string;
 
