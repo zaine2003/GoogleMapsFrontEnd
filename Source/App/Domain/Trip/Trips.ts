@@ -1,6 +1,6 @@
-namespace BuildingBlocksWeb.Domains {
+module BuildingBlocksWeb.Domains.Trip {
 
-    export class Trip {
+    export class TripModel {
 
         public tripId?: number;
         public originAddress: string;

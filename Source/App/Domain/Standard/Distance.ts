@@ -1,4 +1,4 @@
-namespace BuildingBlocksWeb.Domains {
+module BuildingBlocksWeb.Domains.Standard {
 
     export class Distance {
         public value: number;
