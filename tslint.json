@@ -14,6 +14,9 @@
     "no-internal-module": false,
     "array-type": [
       "generic"
+    ],
+    "max-line-length": [
+      200
     ]
   }
 
