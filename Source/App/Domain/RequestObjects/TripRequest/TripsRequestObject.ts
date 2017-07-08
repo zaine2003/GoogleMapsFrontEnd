@@ -1,4 +1,4 @@
-module BuildingBlocksWeb.Domains.RequestObjects  {
+module BuildingBlocksWeb.Domains.RequestObjects.Trip  {
 
     export interface ITripRequestObject {
         trips: Array<TripRequestObject>;
