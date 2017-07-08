@@ -37,7 +37,7 @@ module BuildingBlocksWeb.Services {
             const requestObject: ng.IRequestConfig = {
                 method: 'GET',
                 responseType: 'json',
-                url: '/api/Distance/' + origin + '/' + destination,
+                url: '/api/DistanceInImperial/' + origin + '/' + destination,
             };
             return this.$http(requestObject);
         }
