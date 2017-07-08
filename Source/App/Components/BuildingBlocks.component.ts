@@ -1,5 +1,5 @@
 
-namespace BuildingBlocksWeb.Components {
+module BuildingBlocksWeb.Components {
 
     export class BuildingBlocksWebComponent implements ng.IComponentOptions {
         public bindings: any;

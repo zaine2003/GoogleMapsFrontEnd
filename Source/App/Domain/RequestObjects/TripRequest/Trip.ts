@@ -1,4 +1,4 @@
-namespace BuildingBlocksWeb.Domains {
+module BuildingBlocksWeb.Domains {
 
     export class Trip {
 
