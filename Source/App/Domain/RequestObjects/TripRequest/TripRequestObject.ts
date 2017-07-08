@@ -1,4 +1,4 @@
-module BuildingBlocksWeb.Domains {
+module BuildingBlocksWeb.Domains.RequestObjects.Trip {
 
     export class TripRequestObject {
 

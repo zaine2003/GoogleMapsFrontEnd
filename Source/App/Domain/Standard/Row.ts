@@ -1,4 +1,4 @@
-module BuildingBlocksWeb.Domains {
+module BuildingBlocksWeb.Domains.Standard {
 
     export class Row {
         public elements: Array<Element>;
