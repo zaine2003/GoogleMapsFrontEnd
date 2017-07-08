@@ -2,7 +2,11 @@
 namespace BuildingBlocksWeb.Services {
 
     export interface IBuildingBlocksWebService {
-        get(): ng.IPromise<any>;
+        Distance(origin: string, destination: string): ng.IPromise<any>;
+        DistanceInImperial(origin: string, destination: string): ng.IPromise<any>;
+        DistanceViaMode(origin: string, destination: string, mode: string): ng.IPromise<any>;
+        DistanceAvoiding(origin: string, destination: string, avoid: string): ng.IPromise<any>;
+
         post(): ng.IPromise<any>;
         put(): ng.IPromise<any>;
     }
@@ -17,11 +21,39 @@ namespace BuildingBlocksWeb.Services {
         // -----------------------------------------------------------------------------------
         // Get Requests
         // -----------------------------------------------------------------------------------
-        get = (): ng.IPromise<any[]> => {
+
+        Distance = (origin: string, destination: string): ng.IPromise<any[]> => {
             const requestObject: ng.IRequestConfig = {
                 method: 'GET',
                 responseType: 'json',
-                url: '',
+                url: '/Distance/' + this.origin + '/' + this.destination,
+            };
+            return this.$http(requestObject);
+        }
+
+        DistanceInImperial = (origin: string, destination: string): ng.IPromise<any[]> => {
+            const requestObject: ng.IRequestConfig = {
+                method: 'GET',
+                responseType: 'json',
+                url: '/Distance/' + this.origin + '/' + this.destination,
+            };
+            return this.$http(requestObject);
+        }
+
+        DistanceViaMode = (origin: string, destination: string, mode: string): ng.IPromise<any[]> => {
+            const requestObject: ng.IRequestConfig = {
+                method: 'GET',
+                responseType: 'json',
+                url: '/DistanceViaMode/' + this.origin + '/' + this.destination + '/' + this.mode,
+            };
+            return this.$http(requestObject);
+        }
+
+        DistanceAvoiding = (origin: string, destination: string, avoid: string): ng.IPromise<any[]> => {
+            const requestObject: ng.IRequestConfig = {
+                method: 'GET',
+                responseType: 'json',
+                url: '/DistanceAvoiding/' + this.origin + '/' + this.destination + '/' + this.avoid,
             };
             return this.$http(requestObject);
         }
