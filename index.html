@@ -23,14 +23,54 @@
 
 <body ng-app="BuildingBlocksDistanceMatrixDemo">
 
-  <div ng-view></div>
+  <nav class="navbar navbar-inverse ">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+          aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <a class="navbar-brand" href="#">Building Blocks</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </nav>
 
+  <div class="container">
 
-   <script src="./node_modules/angular/angular.min.js"></script>
- <script src="./node_modules/angular-route/angular-route.min.js"></script>
+    <div ng-view></div>
+
+  </div>
+
+  <script src="./node_modules/angular/angular.min.js"></script>
+  <script src="./node_modules/angular-route/angular-route.min.js"></script>
   <script src="./node_modules/angular-spinner/dist/angular-spinner.min.js"></script>
 
+  <script src="./Build/App/Domain/RequestObjects/TripRequest/TripRequestObject.js"></script>
+  <script src="./Build/App/Domain/RequestObjects/TripRequest/TripsRequestObject.js"></script>
+  <script src="./Build/App/Domain/ResponseObjects/StandardResponse/DistanceMatrixStandardResponse.js"></script>
+  <script src="./Build/App/Domain/Standard/Distance.js"></script>
+  <script src="./Build/App/Domain/Standard/Duration.js"></script>
+  <script src="./Build/App/Domain/Standard/Element.js"></script>
+  <script src="./Build/App/Domain/Standard/Row.js"></script>
+  <script src="./Build/App/Domain/Trip/Trips.js"></script>
+
   <script src="./Build/App/App.js"></script>
+
+  <script src="./Build/App/Services/BuildBlocksData.service.js"></script>
+
+  <script src="./Build/App/Components/DistanceMatrixSearch.component.js"></script>
+   <script src="./Build/App/Components/SavedDistances.component.js"></script>
+
+
 
 </body>
 

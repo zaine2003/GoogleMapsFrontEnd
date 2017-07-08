@@ -108,7 +108,7 @@ module BuildingBlocksWeb.Services {
 
     }
 
-    angular.module('BuildingBlocksWebModule').service('BuildingBlocksWebService', BuildingBlocksWebService);
+    angular.module('BuildingBlocksDistanceMatrixDemo').service('BuildingBlocksWebService', BuildingBlocksWebService);
 
 }
 
