@@ -6,14 +6,14 @@
 
         <div class="form-group">
           <label for="origin">Origin:</label>
-          <input type="text" class="form-control" id="origin" placeholder="Origin">
+          <input type="text" ng-model="$ctrl.tripSearch.originAddress" class="form-control" id="origin" placeholder="Origin">
         </div>
 
         <div class="form-group">
           <label for="destination">Destination:</label>
-          <input type="text" class="form-control" id="destination" placeholder="Destination">
+          <input type="text" ng-model="$ctrl.tripSearch.destinationAddress" class="form-control" id="destination" placeholder="Destination">
         </div>
-<hr>
+        <hr>
         <div class="form-group">
           <label for="mode">Mode of Travel:</label>
           <select class="form-control" id="mode">
@@ -38,10 +38,10 @@
           <label class="radio-inline"><input type="radio" name="imperial">Imperial</label>
           <label class="radio-inline"><input type="radio" name="metric">Metric</label>
         </div>
-<hr>
+        <hr>
 
         <div class="col-md-2 col-md-offset-10">
-          <button type="submit" class="btn btn-default">Search</button>
+          <button type="submit" class="btn btn-default" ng-click="$ctrl.onDistanceSearch()">Search</button>
         </div>
       </form>
     </div>
@@ -51,7 +51,22 @@
   <div class="panel panel-default">
     <div class="panel-heading"><b>Results</b></div>
     <div class="panel-body">
-      <span us-spinner="{length: 6, width: 4, radius: 5, color: '#00b1e5', position:'relative' }" spinner-start-active='false' spinner-key="DataSpinner"></span>
+      <div ng-repeat=" data in $ctrl.distanceSearchResult.rows">
+        <ul>
+          <li ng-repeat=" trip in data.elements">
+            {{ trip.distance.text }}
+              {{ trip.duration.text }}
+          </li>
+          </li>
+        </ul>
+
+
+      </div>
+
+
+
+      <span us-spinner="{length: 6, width: 4, radius: 5, color: '#00b1e5', position:'relative' }" spinner-start-active='false'
+        spinner-key="DataSpinner"></span>
       <hr>
       <div class="col-md-2 col-md-offset-10">
         <button type="submit" class="btn btn-default">Save</button>
