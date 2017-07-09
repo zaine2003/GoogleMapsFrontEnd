@@ -35,8 +35,8 @@
         </div>
         <div class="form-group">
           <label for="avoid">Required Measurement:</label><br>
-          <label class="radio-inline"><input type="radio" name="imperial">Imperial</label>
-          <label class="radio-inline"><input type="radio" name="metric">Metric</label>
+          <label class="radio-inline"><input type="radio" ng-model="$ctrl.tripSearch.unit" value="imperial" name="imperial">Imperial</label>
+          <label class="radio-inline"><input type="radio" ng-model="$ctrl.tripSearch.unit" value="metric" name="metric">Metric</label>
         </div>
         <hr>
 
@@ -51,16 +51,10 @@
   <div class="panel panel-default">
     <div class="panel-heading"><b>Results</b></div>
     <div class="panel-body">
-      <div ng-repeat=" data in $ctrl.distanceSearchResult.rows">
-        <ul>
-          <li ng-repeat=" trip in data.elements">
-            {{ trip.distance.text }}
-              {{ trip.duration.text }}
-          </li>
-          </li>
-        </ul>
-
-
+      <div ng-repeat=" data in $ctrl.distanceSearchResult.rows">       
+          <div ng-repeat=" trip in data.elements">
+            <p>It will take {{ trip.duration.text }} to travel the {{ trip.distance.text }}'s to {{$ctrl.tripSearch.destinationAddress}}
+              </p> 
       </div>
 
 

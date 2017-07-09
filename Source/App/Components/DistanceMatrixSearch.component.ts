@@ -27,10 +27,10 @@ module BuildingBlocksWeb.Components {
             private BuildingBlocksWebService: Services.BuildingBlocksWebService,
             private usSpinnerService: ISpinnerService) { }
 
-             $onInit = () => {
-                 this.tripSearch = new Domains.Trip.TripModel();
+        $onInit = () => {
+            this.tripSearch = new Domains.Trip.TripModel();
 
-             }
+        }
 
         // -----------------------------------------------------------------------------------
         // Service Calls
@@ -38,8 +38,8 @@ module BuildingBlocksWeb.Components {
 
         private distanceSearch = (tripSearch: Domains.Trip.TripModel) => {
 
-                this.startSpinner('DataSpinner');
-                this.BuildingBlocksWebService.Distance(tripSearch.originAddress, tripSearch.destinationAddress).then((result: ng.IHttpPromiseCallbackArg<Domains.ResponseObjects.BaseResponse<Domains.ResponseObjects.Standard.DistanceMatrixStandardResponse>>) => {
+            this.startSpinner('DataSpinner');
+            this.BuildingBlocksWebService.Distance(tripSearch.originAddress, tripSearch.destinationAddress).then((result: ng.IHttpPromiseCallbackArg<Domains.ResponseObjects.BaseResponse<Domains.ResponseObjects.Standard.DistanceMatrixStandardResponse>>) => {
 
                 if (result.status === 200) {
 
@@ -49,10 +49,28 @@ module BuildingBlocksWeb.Components {
                 this.stopSpinner('DataSpinner');
 
             }).catch((error) => {
-                    this.stopSpinner('DataSpinner');
-                    console.log(error);
+                this.stopSpinner('DataSpinner');
+                console.log(error);
 
-                });
+            });
+        }
+        private distanceInImperialSearch = (tripSearch: Domains.Trip.TripModel) => {
+
+            this.startSpinner('DataSpinner');
+            this.BuildingBlocksWebService.DistanceInImperial(tripSearch.originAddress, tripSearch.destinationAddress).then((result: ng.IHttpPromiseCallbackArg<Domains.ResponseObjects.BaseResponse<Domains.ResponseObjects.Standard.DistanceMatrixStandardResponse>>) => {
+
+                if (result.status === 200) {
+
+                    this.distanceSearchResult = new Domains.ResponseObjects.Standard.DistanceMatrixStandardResponse();
+                    this.distanceSearchResult = result.data.data;
+                }
+                this.stopSpinner('DataSpinner');
+
+            }).catch((error) => {
+                this.stopSpinner('DataSpinner');
+                console.log(error);
+
+            });
         }
 
         // -----------------------------------------------------------------------------------
@@ -61,9 +79,18 @@ module BuildingBlocksWeb.Components {
 
         public onDistanceSearch = () => {
 
-            if (this.tripSearch.originAddress != null && this.tripSearch.destinationAddress ) {
+            if (this.tripSearch.originAddress  && this.tripSearch.destinationAddress) {
 
-            this.distanceSearch(this.tripSearch);
+                if (this.tripSearch.unit === 'imperial') {
+
+                    this.distanceInImperialSearch(this.tripSearch);
+                } else {
+                    this.distanceSearch(this.tripSearch);
+                }
+                
+                if (this.tripSearch.mode) {
+
+                }
 
             }
 
