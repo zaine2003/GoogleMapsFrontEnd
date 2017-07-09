@@ -6,37 +6,37 @@
 
         <div class="form-group">
           <label for="origin">Origin:</label>
-          <input type="text" ng-model="$ctrl.tripSearch.originAddress" class="form-control" id="origin" placeholder="Origin">
+          <input type="text" ng-model="$ctrl.tripSearch.originAddress" class="form-control" id="origin" placeholder="Origin" required>
         </div>
 
         <div class="form-group">
           <label for="destination">Destination:</label>
-          <input type="text" ng-model="$ctrl.tripSearch.destinationAddress" class="form-control" id="destination" placeholder="Destination">
+          <input type="text" ng-model="$ctrl.tripSearch.destinationAddress" class="form-control" id="destination" placeholder="Destination" required>
         </div>
         <hr>
         <div class="form-group">
           <label for="mode">Mode of Travel:</label>
-          <select class="form-control" id="mode">
-             <option>Select Mode</option>
-            <option>Bicycle</option>
-            <option>Driving</option>
-            <option>Walking</option>           
+          <select class="form-control" id="mode" ng-model="$ctrl.tripSearch.mode">
+             <option style="display: none" value="">Select Mode</option>
+            <option value="bicycle">Bicycle</option>
+            <option value="driving">Driving</option>
+            <option value="walking">Walking</option>           
           </select>
         </div>
 
         <div class="form-group">
           <label for="avoid">Avoiding:</label>
-          <select class="form-control" id="avoid">
-             <option>Avoid</option>
-            <option>Tolls</option>
-            <option>Highway</option>
-            <option>Ferries</option>  
+          <select class="form-control" id="avoid" ng-model="$ctrl.tripSearch.avoid">
+             <option style="display: none" value="">Avoid</option>
+            <option value="tolls">Tolls</option>
+            <option value="highway">Highway</option>
+            <option value="ferries">Ferries</option>  
           </select>
         </div>
         <div class="form-group">
           <label for="avoid">Required Measurement:</label><br>
-          <label class="radio-inline"><input type="radio" name="imperial">Imperial</label>
-          <label class="radio-inline"><input type="radio" name="metric">Metric</label>
+          <label class="radio-inline"><input type="radio" ng-model="$ctrl.tripSearch.unit" value="imperial" name="imperial">Imperial</label>
+          <label class="radio-inline"><input type="radio" ng-model="$ctrl.tripSearch.unit" value="metric" name="metric">Metric</label>
         </div>
         <hr>
 
@@ -51,16 +51,16 @@
   <div class="panel panel-default">
     <div class="panel-heading"><b>Results</b></div>
     <div class="panel-body">
-      <div ng-repeat=" data in $ctrl.distanceSearchResult.rows">
-        <ul>
-          <li ng-repeat=" trip in data.elements">
-            {{ trip.distance.text }}
-              {{ trip.duration.text }}
-          </li>
-          </li>
-        </ul>
+      <div ng-repeat=" data in $ctrl.distanceSearchResult.rows">       
+          <div ng-repeat=" trip in data.elements">
+            <p ng-if="$ctrl.basicSearch">It will take {{ trip.duration.text }} to travel the {{ trip.distance.text }}'s to {{$ctrl.tripSearch.destinationAddress}}.
+              </p> 
 
+              <p ng-if="$ctrl.modeSearch">It will take {{ trip.duration.text }} to travel the {{ trip.distance.text }}'s to {{$ctrl.tripSearch.destinationAddress}} by {{$ctrl.tripSearch.mode}}.
+              </p> 
 
+              <p ng-if="$ctrl.avoidSearch">It will take {{ trip.duration.text }} to travel the {{ trip.distance.text }}'s to {{$ctrl.tripSearch.destinationAddress}} avoiding {{$ctrl.tripSearch.avoid}}.
+              </p> 
       </div>
 
 
