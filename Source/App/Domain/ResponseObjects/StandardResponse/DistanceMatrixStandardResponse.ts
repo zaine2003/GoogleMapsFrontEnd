@@ -7,7 +7,7 @@ module BuildingBlocksWeb.Domains.ResponseObjects.Standard {
         rows: Array<Domains.Standard.Row>;
     }
 
-    export class DistanceMatrixStandardResponse implements IDistanceMatrixStandardResponse {
+    export class DistanceMatrixStandardResponse  implements IDistanceMatrixStandardResponse {
         public status: string;
         public originAddresses: Array<string>;
         public destinationAddresses: Array<string>;
