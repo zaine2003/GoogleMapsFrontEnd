@@ -28,7 +28,7 @@ module BuildingBlocksWeb.Services {
             const requestObject: ng.IRequestConfig = {
                 method: 'GET',
                 responseType: 'json',
-                url: '/api/Distance/' + origin + '/' + destination,
+                url: 'http://localhost:5000/api/DistanceMatrix/Distance/' + origin + '/' + destination,
             };
             return this.$http(requestObject);
         }
@@ -37,7 +37,7 @@ module BuildingBlocksWeb.Services {
             const requestObject: ng.IRequestConfig = {
                 method: 'GET',
                 responseType: 'json',
-                url: '/api/DistanceInImperial/' + origin + '/' + destination,
+                url: 'http://localhost:5000/api/DistanceMatrix/DistanceInImperial/' + origin + '/' + destination,
             };
             return this.$http(requestObject);
         }
@@ -46,7 +46,7 @@ module BuildingBlocksWeb.Services {
             const requestObject: ng.IRequestConfig = {
                 method: 'GET',
                 responseType: 'json',
-                url: '/api/DistanceViaMode/' + origin + '/' + destination + '/' + mode,
+                url: 'http://localhost:5000/api/DistanceMatrix/DistanceViaMode/' + origin + '/' + destination + '/' + mode,
             };
             return this.$http(requestObject);
         }
@@ -55,7 +55,7 @@ module BuildingBlocksWeb.Services {
             const requestObject: ng.IRequestConfig = {
                 method: 'GET',
                 responseType: 'json',
-                url: '/api/DistanceAvoiding/' + origin + '/' + destination + '/' + avoid,
+                url: 'http://localhost:5000/api/DistanceMatrix/DistanceAvoiding/' + origin + '/' + destination + '/' + avoid,
             };
             return this.$http(requestObject);
         }
@@ -70,7 +70,7 @@ module BuildingBlocksWeb.Services {
                 },
                 method: 'POST',
                 responseType: 'json',
-                url: '/api/SaveTrip/',
+                url: 'http://localhost:5000/api/DistanceMatrix/SaveTrip/',
             };
 
             return this.$http(requestObject);
@@ -83,7 +83,7 @@ module BuildingBlocksWeb.Services {
                 },
                 method: 'POST',
                 responseType: 'json',
-                url: '/api/SaveTrips/',
+                url: 'http://localhost:5000/api/DistanceMatrix/SaveTrips/',
             };
 
             return this.$http(requestObject);
@@ -100,7 +100,7 @@ module BuildingBlocksWeb.Services {
                 },
                 method: 'PUT',
                 responseType: 'json',
-                url: '/api/UpdateTrip/',
+                url: 'http://localhost:5000/api/DistanceMatrix/UpdateTrip/',
             };
 
             return this.$http(requestObject);
