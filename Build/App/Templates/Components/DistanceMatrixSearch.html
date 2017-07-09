@@ -53,7 +53,13 @@
     <div class="panel-body">
       <div ng-repeat=" data in $ctrl.distanceSearchResult.rows">       
           <div ng-repeat=" trip in data.elements">
-            <p ng-if="$ctrl.basicSearch">It will take {{ trip.duration.text }} to travel the {{ trip.distance.text }}'s to {{$ctrl.tripSearch.destinationAddress}}
+            <p ng-if="$ctrl.basicSearch">It will take {{ trip.duration.text }} to travel the {{ trip.distance.text }}'s to {{$ctrl.tripSearch.destinationAddress}}.
+              </p> 
+
+              <p ng-if="$ctrl.modeSearch">It will take {{ trip.duration.text }} to travel the {{ trip.distance.text }}'s to {{$ctrl.tripSearch.destinationAddress}} by {{$ctrl.tripSearch.mode}}.
+              </p> 
+
+              <p ng-if="$ctrl.modeSearch">It will take {{ trip.duration.text }} to travel the {{ trip.distance.text }}'s to {{$ctrl.tripSearch.destinationAddress}} avoiding {{$ctrl.tripSearch.avoid}}.
               </p> 
       </div>
 

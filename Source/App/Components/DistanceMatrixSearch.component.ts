@@ -24,7 +24,7 @@ module BuildingBlocksWeb.Components {
         public tripSearch: Domains.Trip.TripModel;
         public basicSearch: boolean = false;
         public modeSearch: boolean = false;
-        public avoidSearch: boolean  = false;
+        public avoidSearch: boolean = false;
 
 
         constructor(
@@ -105,17 +105,18 @@ module BuildingBlocksWeb.Components {
 
                 if (this.tripSearch.unit === 'imperial') {
                     this.basicSearch = true;
-
                     this.distanceInImperialSearch(this.tripSearch);
-                } else {
-                    this.basicSearch = true;
-                    this.distanceSearch(this.tripSearch);
+                    return;
                 }
 
                 if (this.tripSearch.mode) {
                     this.modeSearch = true;
                     this.distanceViaModeSearch(this.tripSearch);
+                    return;
                 }
+
+                this.basicSearch = true;
+                this.distanceSearch(this.tripSearch);
 
             }
 
