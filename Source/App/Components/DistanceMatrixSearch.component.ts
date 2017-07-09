@@ -22,6 +22,10 @@ module BuildingBlocksWeb.Components {
 
         public distanceSearchResult: Domains.ResponseObjects.Standard.DistanceMatrixStandardResponse;
         public tripSearch: Domains.Trip.TripModel;
+        public basicSearch: boolean = false;
+        public modeSearch: boolean = false;
+        public avoidSearch: boolean  = false;
+
 
         constructor(
             private BuildingBlocksWebService: Services.BuildingBlocksWebService,
@@ -72,6 +76,24 @@ module BuildingBlocksWeb.Components {
 
             });
         }
+        private distanceViaModeSearch = (tripSearch: Domains.Trip.TripModel) => {
+
+            this.startSpinner('DataSpinner');
+            this.BuildingBlocksWebService.DistanceViaMode(tripSearch.originAddress, tripSearch.destinationAddress, tripSearch.mode).then((result: ng.IHttpPromiseCallbackArg<Domains.ResponseObjects.BaseResponse<Domains.ResponseObjects.Standard.DistanceMatrixStandardResponse>>) => {
+
+                if (result.status === 200) {
+
+                    this.distanceSearchResult = new Domains.ResponseObjects.Standard.DistanceMatrixStandardResponse();
+                    this.distanceSearchResult = result.data.data;
+                }
+                this.stopSpinner('DataSpinner');
+
+            }).catch((error) => {
+                this.stopSpinner('DataSpinner');
+                console.log(error);
+
+            });
+        }
 
         // -----------------------------------------------------------------------------------
         //  Event handlers
@@ -79,17 +101,20 @@ module BuildingBlocksWeb.Components {
 
         public onDistanceSearch = () => {
 
-            if (this.tripSearch.originAddress  && this.tripSearch.destinationAddress) {
+            if (this.tripSearch.originAddress && this.tripSearch.destinationAddress) {
 
                 if (this.tripSearch.unit === 'imperial') {
+                    this.basicSearch = true;
 
                     this.distanceInImperialSearch(this.tripSearch);
                 } else {
+                    this.basicSearch = true;
                     this.distanceSearch(this.tripSearch);
                 }
-                
-                if (this.tripSearch.mode) {
 
+                if (this.tripSearch.mode) {
+                    this.modeSearch = true;
+                    this.distanceViaModeSearch(this.tripSearch);
                 }
 
             }
