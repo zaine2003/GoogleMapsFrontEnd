@@ -8,7 +8,6 @@ module BuildingBlocksWeb.Domains.Trip {
         public mode: string;
         public avoid: string;
         public unit: string;
-        constructor(){}
 
     }
 }

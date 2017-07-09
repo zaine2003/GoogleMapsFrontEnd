@@ -95,6 +95,25 @@ module BuildingBlocksWeb.Components {
             });
         }
 
+        private distanceAvoidingSearch = (tripSearch: Domains.Trip.TripModel) => {
+
+            this.startSpinner('DataSpinner');
+            this.BuildingBlocksWebService.DistanceAvoiding(tripSearch.originAddress, tripSearch.destinationAddress, tripSearch.avoid).then((result: ng.IHttpPromiseCallbackArg<Domains.ResponseObjects.BaseResponse<Domains.ResponseObjects.Standard.DistanceMatrixStandardResponse>>) => {
+
+                if (result.status === 200) {
+
+                    this.distanceSearchResult = new Domains.ResponseObjects.Standard.DistanceMatrixStandardResponse();
+                    this.distanceSearchResult = result.data.data;
+                }
+                this.stopSpinner('DataSpinner');
+
+            }).catch((error) => {
+                this.stopSpinner('DataSpinner');
+                console.log(error);
+
+            });
+        }
+
         // -----------------------------------------------------------------------------------
         //  Event handlers
         // -----------------------------------------------------------------------------------
@@ -112,6 +131,12 @@ module BuildingBlocksWeb.Components {
                 if (this.tripSearch.mode) {
                     this.modeSearch = true;
                     this.distanceViaModeSearch(this.tripSearch);
+                    return;
+                }
+
+                if (this.tripSearch.avoid) {
+                    this.avoidSearch = true;
+                    this.distanceAvoidingSearch(this.tripSearch);
                     return;
                 }
 
