@@ -8,6 +8,8 @@ module BuildingBlocksWeb.Domains.Trip {
         public mode: string;
         public avoid: string;
         public unit: string;
+        public distance: string;
+        public duration: string;
 
     }
 }
