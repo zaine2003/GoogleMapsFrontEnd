@@ -51,7 +51,7 @@
   <div class="panel panel-default">
     <div class="panel-heading"><b>Results</b></div>
     <div class="panel-body">
-      <div ng-repeat=" data in $ctrl.distanceSearchResult.rows">       
+      <div ng-repeat="data in $ctrl.distanceSearchResult.rows">       
           <div ng-repeat=" trip in data.elements">
             <p ng-if="$ctrl.basicSearch">It will take {{ trip.duration.text }} to travel the {{ trip.distance.text }}'s to {{$ctrl.tripSearch.destinationAddress}}.
               </p> 
@@ -69,7 +69,7 @@
         spinner-key="DataSpinner"></span>
       <hr>
       <div class="col-md-2 col-md-offset-10">
-        <button type="submit" class="btn btn-default">Save</button>
+        <button type="submit" class="btn btn-default" ng-click="$ctrl.onSavetrip()">Save</button>
       </div>
     </div>
   </div>
