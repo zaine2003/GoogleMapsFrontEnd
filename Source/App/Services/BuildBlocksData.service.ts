@@ -6,6 +6,7 @@ module BuildingBlocksWeb.Services {
         DistanceInImperial(origin: string, destination: string): ng.IPromise<any>;
         DistanceViaMode(origin: string, destination: string, mode: string): ng.IPromise<any>;
         DistanceAvoiding(origin: string, destination: string, avoid: string): ng.IPromise<any>;
+        SavedTrips(): ng.IPromise<Array<Domains.Trip.TripModel>>;
 
         SaveTrip(tripRequestObject: Domains.RequestObjects.Trip.TripRequestObject): ng.IPromise<any>;
         SaveTrips(tripRequestObject: Domains.RequestObjects.Trip.TripsRequestObject): ng.IPromise<any>;
@@ -56,6 +57,15 @@ module BuildingBlocksWeb.Services {
                 method: 'GET',
                 responseType: 'json',
                 url: 'http://localhost:5000/api/DistanceMatrix/DistanceAvoiding/' + origin + '/' + destination + '/' + avoid,
+            };
+            return this.$http(requestObject);
+        }
+
+        SavedTrips = (): ng.IPromise<Array<Domains.Trip.TripModel>> => {
+            const requestObject: ng.IRequestConfig = {
+                method: 'GET',
+                responseType: 'json',
+                url: 'http://localhost:5000/api/DistanceMatrix/SavedTrips/',
             };
             return this.$http(requestObject);
         }
