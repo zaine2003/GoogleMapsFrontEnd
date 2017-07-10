@@ -19,7 +19,11 @@ module BuildingBlocksWeb.Services {
 
         static $inject: string[] = ['$http'];
 
-        constructor(private $http: ng.IHttpService) { }
+        constructor(private $http: ng.IHttpService) {
+
+
+
+         }
 
         // -----------------------------------------------------------------------------------
         // Get Requests
@@ -76,6 +80,7 @@ module BuildingBlocksWeb.Services {
             const requestObject = {
                 data: tripRequestObject,
                 headers: {
+                    'Accept': 'application/json',
                     'Content-type': 'application/json',
                 },
                 method: 'POST',
