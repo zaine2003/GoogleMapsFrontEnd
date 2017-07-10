@@ -10,7 +10,6 @@ module BuildingBlocksWeb.Components {
         constructor() {
 
             this.bindings = {};
-
             this.controller = DistanceMatrixSearchController;
             this.templateUrl = './Build/App/Templates/Components/DistanceMatrixSearch.html';
         }
@@ -58,6 +57,7 @@ module BuildingBlocksWeb.Components {
 
             });
         }
+
         private distanceInImperialSearch = (tripSearch: Domains.Trip.TripModel) => {
 
             this.startSpinner('DataSpinner');
@@ -76,6 +76,7 @@ module BuildingBlocksWeb.Components {
 
             });
         }
+
         private distanceViaModeSearch = (tripSearch: Domains.Trip.TripModel) => {
 
             this.startSpinner('DataSpinner');
@@ -114,6 +115,24 @@ module BuildingBlocksWeb.Components {
             });
         }
 
+        private saveTrip = (trip: Domains.RequestObjects.Trip.TripRequestObject) => {
+
+            this.startSpinner('DataSpinner');
+
+            this.BuildingBlocksWebService.SaveTrip(trip).then((result: ng.IHttpPromiseCallbackArg<any>) => {
+
+                if (result.status === 201) {
+                    console.log('saved trip');
+                }
+
+            }).catch((error) => {
+                this.stopSpinner('DataSpinner');
+                console.log(error);
+
+            });
+
+        }
+
         // -----------------------------------------------------------------------------------
         //  Event handlers
         // -----------------------------------------------------------------------------------
@@ -142,6 +161,27 @@ module BuildingBlocksWeb.Components {
 
                 this.basicSearch = true;
                 this.distanceSearch(this.tripSearch);
+
+            }
+
+        }
+
+        public onSavetrip = () => {
+
+            if (this.tripSearch != null) {
+
+                const tripRequestObject = new Domains.RequestObjects.Trip.TripRequestObject();
+
+                const distance = this.distanceSearchResult.rows[0].elements[0].distance;
+                const duration = this.distanceSearchResult.rows[0].elements[0].duration;
+
+
+                tripRequestObject.trip.originAddress = this.tripSearch.originAddress;
+                tripRequestObject.trip.destinationAddress = this.tripSearch.destinationAddress;
+                tripRequestObject.trip.duration = duration.text;
+                tripRequestObject.trip.distance = distance.text;
+
+                this.saveTrip(tripRequestObject);
 
             }
 
