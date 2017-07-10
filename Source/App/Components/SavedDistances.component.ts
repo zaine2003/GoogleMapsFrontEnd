@@ -20,17 +20,41 @@ module BuildingBlocksWeb.Components {
 
         static $inject = ['BuildingBlocksWebService', 'usSpinnerService'];
 
-        public x: string;
+        public savedTrips: Array<Domains.Trip.TripModel>;
 
         constructor(
             private BuildingBlocksWebService: Services.BuildingBlocksWebService,
             private usSpinnerService: ISpinnerService) { }
 
-             $onInit = () => {}
+        $onInit = () => {
+
+            this.getSavedTrips();
+         }
 
         // -----------------------------------------------------------------------------------
         // Service Calls
         // -----------------------------------------------------------------------------------
+
+        private getSavedTrips = () => {
+
+            this.startSpinner('SavedTripsSpinner');
+            this.BuildingBlocksWebService.SavedTrips().then((result: ng.IHttpPromiseCallbackArg<Array<Domains.Trip.TripModel>>) => {
+
+                if (result.status === 200) {
+
+                    this.savedTrips = new Array<Domains.Trip.TripModel>();
+                    this.savedTrips = result.data;
+                }
+                this.stopSpinner('SavedTripsSpinner');
+
+            }).catch((error) => {
+                this.stopSpinner('SavedTripsSpinner');
+                console.log(error);
+
+            });
+
+
+        }
 
         // -----------------------------------------------------------------------------------
         //  Event handlers
