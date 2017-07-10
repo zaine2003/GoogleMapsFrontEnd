@@ -114,6 +114,24 @@ module BuildingBlocksWeb.Components {
             });
         }
 
+        private saveTrip = (trip: Domains.RequestObjects.Trip.TripRequestObject) => {
+
+            this.startSpinner('DataSpinner');
+
+            this.BuildingBlocksWebService.SaveTrip(trip).then((result: ng.IHttpPromiseCallbackArg<any>) => {
+
+                if (result.status === 201) {
+                    console.log('saved trip');
+                }
+
+            }).catch((error) => {
+                this.stopSpinner('DataSpinner');
+                console.log(error);
+
+            });
+
+        }
+
         // -----------------------------------------------------------------------------------
         //  Event handlers
         // -----------------------------------------------------------------------------------
@@ -142,6 +160,20 @@ module BuildingBlocksWeb.Components {
 
                 this.basicSearch = true;
                 this.distanceSearch(this.tripSearch);
+
+            }
+
+        }
+
+        public onSavetrip = (searchedTrip: Domains.Trip.TripModel) => {
+
+            if (searchedTrip != null) {
+
+                const tripRequestObject = new Domains.RequestObjects.Trip.TripRequestObject();
+
+                tripRequestObject.trip = searchedTrip;
+
+                this.saveTrip(tripRequestObject);
 
             }
 
