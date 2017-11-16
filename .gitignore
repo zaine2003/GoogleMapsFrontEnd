@@ -1,5 +1,5 @@
 node_modules/
 bower_components/
-Source/App/**/*.ts.js
+Source/App/**/*.js
 Build/App/**/*.js
 Build/App/**/*.js.map
