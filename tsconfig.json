@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+         //"outDir": "./Build/js/",
+        "target": "es5",
+        "module": "commonjs",       
+        "sourceMap": true,
+        "removeComments": true,
+        "moduleResolution":"classic",
+        "baseUrl": "./Source/App",
+        "typeRoots": [
+            "../node_modules/@types"
+        ],
+        "outDir": "./Build/App/",      
+        "types": [
+            "jquery",
+            "angular",
+            "angular-route",
+            "angular-spinner",           
+            "bootstrap"
+        ],
+        "watch": true
+    },   
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ],
+    "include": [
+        "Source/**/*"
+    ]  
+}
